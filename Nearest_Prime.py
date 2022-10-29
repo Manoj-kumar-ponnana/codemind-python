@@ -1,29 +1,21 @@
-m=int(input())
-for i in range(m):
+#nearest prime
+t=int(input())
+for _ in range(t):
+    def is_prime(n):
+        if n <2:
+            return False
+        for i in range(2,int(n**0.5)+1):
+            if n%i==0:
+                return False
+        return True
+    def next_prime(n,x):
+        while is_prime(n)==False:
+            n+=x
+        return n
     n=int(input())
-    a=n
-    while True:
-        p=True
-        for i in range(2,int(a**0.5)+1):
-            if a%i==0:
-                p=False
-                break
-        if p==True:
-            break
-        else:
-            a+=1
-    b=n
-    while True:
-        p=True
-        for i in range(2,int(b**0.5)+1):
-            if b%i==0:
-                p=False
-                break
-        if p==True:
-            break
-        else:
-            b-=1
-    if a-n < n-b:
-        print(a)
+    np=next_prime(n,1)
+    pp=next_prime(n,-1)
+    if np-n<n-pp:
+        print(np)
     else:
-        print(b)
+        print(pp)
